@@ -1,0 +1,14 @@
+{
+  "posts": [
+    {
+      "judul": "novelku",
+      "tahun": "2100",
+      "penerbit": "Noviana",
+      "id": 1
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
