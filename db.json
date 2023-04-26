@@ -1,13 +1,21 @@
 {
-  "posts": [
+  "koleksidb": [
     {
-      "judul": "novelku",
+      "judul": "Novelku",
       "tahun": "2100",
-      "penerbit": "Noviana",
+      "penerbit": "Novia",
       "id": 1
     }
   ],
-  "comments": [],
+  "anggota": [
+    {
+      "nik": "123456789",
+      "namaLengkap": "Novianawati",
+      "nomorhp": "08883115560",
+      "alamat": "Pasuruan",
+      "id": 1
+    }
+  ],
   "profile": {
     "name": "typicode"
   }

@@ -1,31 +1,33 @@
 import axios from "axios";
 import React, {useEffect, useState} from "react";
-import "./Koleksi.css"
+import "./Keanggotaan.css"
 
-const AddKoleksi = () => {
+const Keanggotaan = () => {
     const [data, setData] = useState([{}]);
     useEffect(()=>{
-        getKoleksi();
+        getAnggota();
         console.log(data);
     }, []);
-    const getKoleksi = async() => {
+    const getAnggota = async() => {
         await axios
-        .get("http://localhost:4000/koleksidb")
+        .get("http://localhost:4000/anggota")
         .then((res) => setData(res.data));
     };
     const [formData, setFormData] = useState({
-        judul:"",
-        tahun:"",
-        penerbit:"",
+        nik:"",
+        namaLengkap:"",
+        nomorhp:"",
+        alamat:"",
     });
     const [editData, setEditData] = useState({
-        judul:"",
-        tahun:"",
-        penerbit:"",
+        nik:"",
+        namaLengkap:"",
+        nomorhp:"",
+        alamat:"",
         id:"",
     });
     const handleFormSubmit = async (e) => {
-        let response = await axios.post("http://localhost:4000/koleksidb", formData);
+        let response = await axios.post("http://localhost:4000/anggota", formData);
 
         if(response){
             alert("data sukses dimasukkan");
@@ -33,92 +35,108 @@ const AddKoleksi = () => {
             alert("data gagal dimasukkan");
         }
         setFormData({
-            judul:"",
-            tahun:"",
-            penerbit:"",
+            nik:"",
+            namaLengkap:"",
+            nomorhp:"",
+            alamat:"",
         });
-        getKoleksi();
+        getAnggota();
     };
     const handleDelete = async(id) => {
         await axios
-        .delete('http://localhost:4000/koleksidb/' + id)
+        .delete('http://localhost:4000/anggota/' + id)
         .then((res) => alert("data telah dihapus"));
     };
     const handleEdit = async () => {
-        await axios.put(`http://localhost:4000/koleksidb/${editData.id}`, editData)
+        await axios.put(`http://localhost:4000/anggota/${editData.id}`, editData)
         .then((res) => {
             alert("Edit data berhasil");
-            getKoleksi();
+            getAnggota();
         });
     };
     return (
         <div className="container">
             <div className="row">
-                <h1 >Tambahkan Data Koleksi</h1>
+                <h1 >Tambahkan Data Keanggotaan</h1>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Judul
+                    <label for="exampleFormControlInput1" class="form-label">NIK
                     </label>
                     <input 
                         type="text" 
                         class="form-control"
                         id="exampleFormControlInput1"
-                        value={formData.judul}
+                        value={formData.nik}
                         onChange={(e) => 
-                            setFormData({ ...formData, judul: e.target.value})
+                            setFormData({ ...formData, nik: e.target.value})
                         }
                     />
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Tahun terbit
+                    <label for="exampleFormControlInput1" class="form-label">Nama Lengkap
                     </label>
                     <input
                         type="text"
                         class="form-control"
                         id="exampleFormControlInput1"
-                        value={formData.tahun}
+                        value={formData.namaLengkap}
                         onChange={(e) => 
-                            setFormData({ ...formData, tahun: e.target.value})
+                            setFormData({ ...formData, namaLengkap: e.target.value})
                         }
                     />
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Penerbit
+                    <label for="exampleFormControlInput1" class="form-label">Nomor HP
                     </label>
                     <input
                         type="text"
                         class="form-control"
                         id="exampleFormControlInput1"
-                        value={formData.penerbit}
+                        value={formData.nomorhp}
                         onChange={(e) => 
-                            setFormData({ ...formData, penerbit: e.target.value})
+                            setFormData({ ...formData, nomorhp: e.target.value})
+                        }
+                    />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Alamat
+                    </label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="exampleFormControlInput1"
+                        value={formData.alamat}
+                        onChange={(e) => 
+                            setFormData({ ...formData, alamat: e.target.value})
                         }
                     />
                 </div>
                 <div class="mb-3">
                     <button className="btn btn-success"
-                    onClick={handleFormSubmit}>Add koleksi</button>
+                    onClick={handleFormSubmit}>Add Keanggotaan</button>
                 </div>
             </div>{" "}
             <div>
-            <h1>List Koleksi</h1>
+            <h1>List Keanggotaan Perpustakaan</h1>
             <table class="table table-dark table-hover">
             <thead>
                 <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Judul</th>
-                <th scope="col">Tahun Terbit</th>
-                <th scope="col">Penerbit</th>
+                <th scope="col">NIK</th>
+                <th scope="col">Nama Lengkap</th>
+                <th scope="col">Nomor HP</th>
+                <th scope="col">Alamat</th>
                 <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {
-                    data && data.map(koleksi => (
+                    data && data.map(keanggotaan => (
                         <tr>
-                        <th scope="row">{koleksi.id}</th>
-                        <td>{koleksi.judul}</td>
-                        <td>{koleksi.tahun}</td>
-                        <td>{koleksi.penerbit}</td>
+                        <th scope="row">{keanggotaan.id}</th>
+                        <td>{keanggotaan.nik}</td>
+                        <td>{keanggotaan.namaLengkap}</td>
+                        <td>{keanggotaan.nomorhp}</td>
+                        <td>{keanggotaan.alamat}</td>
                         <td 
                         style={{display:"flex",
                         justifyContent:
@@ -128,13 +146,14 @@ const AddKoleksi = () => {
                             data-bs-toggle="modal"
                             data-bs-target="#exampleModal"
                             onClick={()=>setEditData({
-                                judul:koleksi.judul,
-                                tahun:koleksi.tahun,
-                                penerbit:koleksi.penerbit,
-                                id:koleksi.id,
+                                nik:keanggotaan.nik,
+                                namaLengkap:keanggotaan.namaLengkap,
+                                nomorhp:keanggotaan.nomorhp,
+                                alamat:keanggotaan.alamat,
+                                id:keanggotaan.id,
                             })}
                             >Edit</button>
-                            <button className="btn btn-danger" onClick={() => handleDelete(koleksi.id)}>Hapus</button>
+                            <button className="btn btn-danger" onClick={() => handleDelete(keanggotaan.id)}>Hapus</button>
                         </td>
                         </tr>
                 ))}
@@ -145,46 +164,59 @@ const AddKoleksi = () => {
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Koleksi</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Keanggotaan</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
             <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Judul
+                    <label for="exampleFormControlInput1" class="form-label">NIK
                     </label>
                     <input 
                         type="text" 
                         class="form-control"
                         id="exampleFormControlInput1"
-                        value={editData.judul}
+                        value={editData.nik}
                         onChange={(e) => 
-                            setEditData({ ...editData, judul: e.target.value})
+                            setEditData({ ...editData, nik: e.target.value})
                         }
                     />
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Tahun terbit
+                    <label for="exampleFormControlInput1" class="form-label">Nama Lengkap
                     </label>
                     <input
                         type="text"
                         class="form-control"
                         id="exampleFormControlInput1"
-                        value={editData.tahun}
+                        value={editData.namaLengkap}
                         onChange={(e) => 
-                            setEditData({ ...editData, tahun: e.target.value})
+                            setEditData({ ...editData, namaLengkap: e.target.value})
                         }
                     />
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Penerbit
+                    <label for="exampleFormControlInput1" class="form-label">Nomor HP
                     </label>
                     <input
                         type="text"
                         class="form-control"
                         id="exampleFormControlInput1"
-                        value={editData.penerbit}
+                        value={editData.nomorhp}
                         onChange={(e) => 
-                            setEditData({ ...editData, penerbit: e.target.value})
+                            setEditData({ ...editData, nomorhp: e.target.value})
+                        }
+                    />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Alamat
+                    </label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="exampleFormControlInput1"
+                        value={editData.alamat}
+                        onChange={(e) => 
+                            setEditData({ ...editData, alamat: e.target.value})
                         }
                     />
                 </div>
@@ -200,4 +232,4 @@ const AddKoleksi = () => {
     )
 }
 
-export default AddKoleksi;
+export default Keanggotaan;
