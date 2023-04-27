@@ -112,7 +112,7 @@ const Keanggotaan = () => {
                 </div>
                 <div class="mb-3">
                     <button className="btn btn-success"
-                    onClick={handleFormSubmit}>Add Keanggotaan</button>
+                    onClick={handleFormSubmit}>Daftar</button>
                 </div>
             </div>{" "}
             <div>
