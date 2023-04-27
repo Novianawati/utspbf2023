@@ -1,45 +1,38 @@
 {
   "koleksidb": [
     {
-      "judul": "Novelku",
+      "judul": "Biru",
       "tahun": "2100",
-      "penerbit": "Novia",
+      "penulis": "Nesa",
       "id": 1
     }
   ],
   "anggota": [
     {
       "nik": "123456789",
-      "namaLengkap": "Novianawati",
-      "nomorhp": "08883115560",
-      "alamat": "Pasuruan",
+      "namaLengkap": "Nesa Itfirul Lail",
+      "nomorhp": "0812345678",
+      "alamat": "Surabaya",
       "id": 1
     }
   ],
   "kembalian": [
     {
-      "noanggota": "1234",
-      "nama": "Noviana",
+      "noanggota": "001",
+      "nama": "Novianawati",
       "notelp": "08883115560",
-      "buku": "akuuu",
-      "tglKembali": "12 juni",
-      "id": 2
-    },
-    {
-      "noanggota": "33333",
-      "nama": "nov",
-      "notelp": "088",
-      "buku": "buku",
-      "tglKembali": "12 jj",
-      "id": 3
+      "buku": "Novelku",
+      "tglKembali": "05 maret 2100",
+      "id": 1
     }
   ],
   "pinjam": [
     {
-      "nik": "123456789",
-      "namaLengkap": "Novianawati",
-      "nomorhp": "08883115560",
-      "alamat": "Pasuruan",
+      "nomoranggota": "001",
+      "namaLgp": "Novianawati",
+      "notel": "08883115560",
+      "bukuPinjam": "Novelku",
+      "tglPinjam": "30 mei",
       "id": 1
     }
   ],

@@ -16,12 +16,12 @@ const AddKoleksi = () => {
     const [formData, setFormData] = useState({
         judul:"",
         tahun:"",
-        penerbit:"",
+        penulis:"",
     });
     const [editData, setEditData] = useState({
         judul:"",
         tahun:"",
-        penerbit:"",
+        penulis:"",
         id:"",
     });
     const handleFormSubmit = async (e) => {
@@ -35,7 +35,7 @@ const AddKoleksi = () => {
         setFormData({
             judul:"",
             tahun:"",
-            penerbit:"",
+            penulis:"",
         });
         getKoleksi();
     };
@@ -82,15 +82,15 @@ const AddKoleksi = () => {
                     />
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Penerbit
+                    <label for="exampleFormControlInput1" class="form-label">Penulis
                     </label>
                     <input
                         type="text"
                         class="form-control"
                         id="exampleFormControlInput1"
-                        value={formData.penerbit}
+                        value={formData.penulis}
                         onChange={(e) => 
-                            setFormData({ ...formData, penerbit: e.target.value})
+                            setFormData({ ...formData, penulis: e.target.value})
                         }
                     />
                 </div>
@@ -107,7 +107,7 @@ const AddKoleksi = () => {
                 <th scope="col">ID</th>
                 <th scope="col">Judul</th>
                 <th scope="col">Tahun Terbit</th>
-                <th scope="col">Penerbit</th>
+                <th scope="col">Penulis</th>
                 <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -118,7 +118,7 @@ const AddKoleksi = () => {
                         <th scope="row">{koleksi.id}</th>
                         <td>{koleksi.judul}</td>
                         <td>{koleksi.tahun}</td>
-                        <td>{koleksi.penerbit}</td>
+                        <td>{koleksi.penulis}</td>
                         <td 
                         style={{display:"flex",
                         justifyContent:
@@ -130,7 +130,7 @@ const AddKoleksi = () => {
                             onClick={()=>setEditData({
                                 judul:koleksi.judul,
                                 tahun:koleksi.tahun,
-                                penerbit:koleksi.penerbit,
+                                penulis:koleksi.penulis,
                                 id:koleksi.id,
                             })}
                             >Edit</button>
@@ -176,15 +176,15 @@ const AddKoleksi = () => {
                     />
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Penerbit
+                    <label for="exampleFormControlInput1" class="form-label">Penulis
                     </label>
                     <input
                         type="text"
                         class="form-control"
                         id="exampleFormControlInput1"
-                        value={editData.penerbit}
+                        value={editData.penulis}
                         onChange={(e) => 
-                            setEditData({ ...editData, penerbit: e.target.value})
+                            setEditData({ ...editData, penulis: e.target.value})
                         }
                     />
                 </div>
